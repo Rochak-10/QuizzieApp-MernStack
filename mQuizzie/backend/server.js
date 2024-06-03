@@ -38,11 +38,10 @@ app.use((error, req, res, next) => {
     console.log(error);
     res.status(500).json({ errorMessage: 'Something went wrong!' });
 });
-const DB_URI = process.env.MONGO_URI;
+;
 
-console.log('MongoDB URI:', DB_URI)
 mongoose
-    .connect(process.env.DB_URL)
+    .connect(process.env.MONGO_URL)
     .then(() => console.log('DB Connected!'))
     .catch((error) => console.log('DB failed to connect', error));
 
