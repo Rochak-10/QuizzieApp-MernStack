@@ -44,7 +44,7 @@ mongoose
     .then(() => console.log('DB Connected!'))
     .catch((error) => console.log('DB failed to connect', error));
 
-const PORT = 5000;
-app.listen(PORT, () => {
+
+app.listen(process.env.PORT, () => {
     console.log(`Backend server running at port ${PORT}`);
 });
