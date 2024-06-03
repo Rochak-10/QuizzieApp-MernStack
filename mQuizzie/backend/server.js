@@ -14,7 +14,7 @@ app.use(cookieParser());
 
 // Configure CORS
 const corsOptions = {
-    origin: 'https://localhost:3000',
+    origin: 'https://quizzie-app-mern-stack-pytmhvfz1-rochak-rauts-projects.vercel.app/',
     credentials: true,
 };
 app.use(cors(corsOptions));
