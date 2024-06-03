@@ -3,7 +3,7 @@ import styles from "../Analytics/CSS/viewpollanalysis.module.css";
 import { Context } from '../../index';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import { SERVER_URL } from '../../utils/utils';
+import { quizServer } from '../../utils/utils';
 
 const Viewpollanalysis = ({currentQuizID}) => {
     const {loading, setLoading} = useContext(Context)
@@ -12,7 +12,7 @@ const Viewpollanalysis = ({currentQuizID}) => {
     const getQuiz = async () => {
         setLoading(true)
         try {
-            const {data} = await axios.get(`http://localhost:5000/api/v1/quiz/getQuizForUpdate/${currentQuizID}`, { withCredentials: true });
+            const {data} = await axios.get(`${quizServer}/getQuizForUpdate/${currentQuizID}`, { withCredentials: true });
             console.log(data)
             setQuiz(data.quiz);
             setLoading(false)

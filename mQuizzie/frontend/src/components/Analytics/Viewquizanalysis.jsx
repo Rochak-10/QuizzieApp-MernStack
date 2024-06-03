@@ -4,7 +4,7 @@ import Leftsidebar from '../Home/Leftsidebar';
 import { Context } from '../../index';
 import toast from 'react-hot-toast';
 import axios from 'axios';
-import { SERVER_URL } from '../../utils/utils';
+import { quizServer } from '../../utils/utils';
 
 const Viewquizanalysis = ({currentQuizID}) => {
 
@@ -14,7 +14,7 @@ const Viewquizanalysis = ({currentQuizID}) => {
     const getQuiz = async () => {
         setLoading(true)
         try {
-          const {data} = await axios.get(`http://localhost:5000/api/v1/quiz/getQuizForUpdate/${currentQuizID}`, { withCredentials: true });
+          const {data} = await axios.get(`${quizServer}/getQuizForUpdate/${currentQuizID}`, { withCredentials: true });
           setQuiz(data.quiz);
           setLoading(false)
         } catch (err) {

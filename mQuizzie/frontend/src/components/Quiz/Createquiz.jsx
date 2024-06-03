@@ -7,7 +7,7 @@ import TypeURL from "../Quiz/TypeURL";
 import TypetextandURL from "../Quiz/TypetextandURL";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { SERVER_URL } from "../../utils/utils";
+import { quizServer } from "../../utils/utils";
 import { Context } from "../../index";
 
 const Createquiz = ({
@@ -131,7 +131,7 @@ const Createquiz = ({
     if (flag === true) {
       setLoading(true);
       try {
-        const { data } = await axios.post(`http://localhost:5000/api/v1/quiz/create-quiz`, obj, {
+        const { data } = await axios.post(`${quizServer}/create-quiz`, obj, {
           withCredentials: true,
           headers: { "Content-Type": "application/json" },
         });

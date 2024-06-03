@@ -6,7 +6,7 @@ import share from "../../assets/share.png";
 import { Link } from "react-router-dom";
 import { Context } from "../../index";
 import axios from "axios";
-import { SERVER_URL } from "../../utils/utils";
+import { quizServer } from "../../utils/utils";
 import toast from "react-hot-toast";
 import Viewquizanalysis from "./Viewquizanalysis";
 import Viewpollanalysis from "./Viewpollanalysis";
@@ -29,7 +29,7 @@ const Analytics = ({quizId, quizType, setAnalytics, setDashboard, getLink, setGe
     }
     setLoading(true);
     try {
-      const { data } = await axios.get(`http://localhost:5000/api/v1/quiz/getAllQuizes/${userId}`, {
+      const { data } = await axios.get(`${quizServer}/getAllQuizes/${userId}`, {
         withCredentials: true,
       });
       setLoading(false);
@@ -88,7 +88,7 @@ const Analytics = ({quizId, quizType, setAnalytics, setDashboard, getLink, setGe
   const handleDeletion = async () => {
     setLoading(true)
     try {
-      const { data } = await axios.delete(`http://localhost:5000/api/v1/quiz/delete-quize/${deleteQuizID}`, { withCredentials: true });
+      const { data } = await axios.delete(`${quizServer}/delete-quize/${deleteQuizID}`, { withCredentials: true });
       setLoading(false)
       toast.success(data.message)
       setIsAuthenticated(true)

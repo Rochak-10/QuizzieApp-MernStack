@@ -7,7 +7,7 @@ import Createquiz from "../Quiz/Createquiz";
 import Leftsidebar from "../Home/Leftsidebar";
 import { Context } from "../../index";
 import axios from "axios";
-import { SERVER_URL } from "../../utils/utils";
+import { userServer } from "../../utils/utils";
 
 const Home = () => {
   const [dashboard, setDashboard] = useState(true);
@@ -24,7 +24,7 @@ const Home = () => {
   const getMyProfileApi = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get(`http://localhost:5000/api/v1/user/getProfile`, { withCredentials: true });
+      const { data } = await axios.get(`${userServer}/getProfile`, { withCredentials: true });
       setLoading(false);
       setUser(data.profile);
       setIsAuthenticated(true);

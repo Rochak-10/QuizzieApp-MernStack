@@ -40,7 +40,7 @@ const Leftsidebar = ({
   const logoutApi = async () => {
     setLoading(true)
     try {
-      const {data} = await axios.get(`http://localhost:5000/api/v1/quiz/logout`, {withCredentials : true})
+      const {data} = await axios.get(`${userServer}/logout`, {withCredentials : true})
       setLoading(false)
       toast.success(data.message)
       setIsAuthenticated(false)

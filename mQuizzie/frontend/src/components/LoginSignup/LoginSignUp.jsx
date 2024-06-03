@@ -80,7 +80,7 @@ const LoginSignUp = () => {
         }
 
         try {
-            const { data } = await axios.post(`http://localhost:5000/api/v1/user/register`, 
+            const { data } = await axios.post(`${userServer}/register`, 
                 { name, email, password, confirmPassword }, 
                 { withCredentials: true, headers: { "Content-Type": "application/json" } }
             );
@@ -120,7 +120,7 @@ const LoginSignUp = () => {
         }
 
         try {
-            const { data } = await axios.post(`http://localhost:5000/api/v1/user/login`, 
+            const { data } = await axios.post(`${userServer}/login`, 
                 { email, password: confirmPassword }, 
                 { withCredentials: true, headers: { "Content-Type": "application/json" } }
             );

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styles from "../Quiz/CSS/playquiz.module.css";
 import axios from 'axios';
-import { SERVER_URL } from '../../utils/utils';
+import { quizServer } from '../../utils/utils';
 import toast from 'react-hot-toast';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Context } from '../../index';
@@ -18,7 +18,7 @@ const Playquiz = () => {
 
   const getQuiz = async () => {
     try {
-      const {data} = await axios.get(`http://localhost:5000/api/v1/quiz/getQuiz/${id}`, { withCredentials: true });
+      const {data} = await axios.get(`${quizServer}/getQuiz/${id}`, { withCredentials: true });
       setQuiz(data.quiz);
       setTimer(data.quiz.timer);
       setUserAnswers(data.quiz.questions.map(question => ({ _id: question._id, question: question.question, userAnswer: "" })));

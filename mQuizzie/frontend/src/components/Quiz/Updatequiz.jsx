@@ -7,7 +7,7 @@ import TypeURL from "../Quiz/TypeURL";
 import TypetextandURL from "../Quiz/TypetextandURL";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { SERVER_URL } from '../../utils/utils'
+import { quizServer } from '../../utils/utils'
 import { Context } from "../../index";
 
 const Updatequiz = ({ updateQuiz, setUpdateQuiz, quizTobeUpdate }) => {
@@ -34,7 +34,7 @@ const Updatequiz = ({ updateQuiz, setUpdateQuiz, quizTobeUpdate }) => {
   const getQuiz = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/v1/quiz/getQuizForUpdate/${quizTobeUpdate}`,
+        `${quizServer}/getQuizForUpdate/${quizTobeUpdate}`,
         { withCredentials: true }
       );
       setQuestions(data.quiz.questions);
@@ -155,7 +155,7 @@ const Updatequiz = ({ updateQuiz, setUpdateQuiz, quizTobeUpdate }) => {
       setLoading(true);
       try {
         const { data } = await axios.put(
-          `http://localhost:5000/api/v1/quiz/update-quize/${quizTobeUpdate}`,
+        `${quizServer}/update-quize/${quizTobeUpdate}`,
           obj,
           {
             withCredentials: true,

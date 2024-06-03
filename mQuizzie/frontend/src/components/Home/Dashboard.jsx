@@ -3,6 +3,7 @@ import styles from "../Home/CSS/dashboard.module.css";
 import eye from "../../assets/eye.png";
 import axios from "axios";
 import { Context } from "../../index";
+import {quizServer} from "../../utils/utils.jsx";
 
 const Dashboard = ({ id }) => {
   const [quizes, setQuizes] = useState([]);
@@ -20,7 +21,7 @@ const Dashboard = ({ id }) => {
     }
     setLoading(true);
     try {
-      const { data } = await axios.get(`http://localhost:5000/api/v1/quiz/getAllQuizes/${id}`, {
+      const { data } = await axios.get(`${quizServer}/getAllQuizes/${id}`, {
         withCredentials: true,
       });
       setLoading(false);
@@ -38,7 +39,7 @@ const Dashboard = ({ id }) => {
     }
     setLoading(true);
     try {
-      const { data } = await axios.get(`http://localhost:5000/api/v1/quiz/getAllQuizes/${id}`, {
+      const { data } = await axios.get(`${quizServer}/getAllQuizes/${id}`, {
         withCredentials: true,
       });
       setLoading(false);
